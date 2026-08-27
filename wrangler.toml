@@ -4,20 +4,24 @@ compatibility_date = "2025-09-23"
 compatibility_flags = ["nodejs_compat"]
 workers_dev = true
 
-# Public variables (safe to commit). Change MAIL_DOMAIN once your domain is on Cloudflare.
 [vars]
+# Change this to your own domain once Email Routing is enabled on it.
 MAIL_DOMAIN = "example.com"
-BOT_USERNAME = "your_bot_username"
+# Your bot username without the @ (used for invite links).
+BOT_USERNAME = "your_bot"
+# Lifetime of a temporary address, in seconds (86400 = 24h).
 TEMP_TTL_SECONDS = "86400"
+# How many permanent addresses each user gets for free.
 MAX_PERM_ADDRESSES = "3"
 
 # Create with: wrangler kv namespace create MAILBOX
+# then paste the returned id below.
 [[kv_namespaces]]
 binding = "MAILBOX"
 id = "PUT_YOUR_KV_NAMESPACE_ID_HERE"
 
-# Secrets are NOT stored here. Set them once with:
-#   wrangler secret put BOT_TOKEN
-#   wrangler secret put WEBHOOK_SECRET
-#   wrangler secret put SETUP_TOKEN
-#   wrangler secret put ADMIN_ID
+# Secrets (never put them in this file):
+#   BOT_TOKEN       - from @BotFather
+#   WEBHOOK_SECRET  - any random string
+#   SETUP_TOKEN     - any random string, used once to call /init
+#   ADMIN_ID        - your numeric Telegram user id (optional)
