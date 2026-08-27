@@ -5,23 +5,28 @@ compatibility_flags = ["nodejs_compat"]
 workers_dev = true
 
 [vars]
-# Change this to your own domain once Email Routing is enabled on it.
+# Domain configured in Cloudflare Email Routing (catch-all -> this worker).
 MAIL_DOMAIN = "example.com"
-# Your bot username without the @ (used for invite links).
+# Bot username without @ (used for referral links).
 BOT_USERNAME = "your_bot"
-# Lifetime of a temporary address, in seconds (86400 = 24h).
+# Lifetime of a temporary address, in seconds.
 TEMP_TTL_SECONDS = "86400"
-# How many permanent addresses each user gets for free.
+# Free permanent addresses per user.
 MAX_PERM_ADDRESSES = "3"
+# Optional: public URL of the web UI shown by /web. Defaults to the worker URL.
+# WEB_URL = "https://mail.example.com"
 
-# Create with: wrangler kv namespace create MAILBOX
-# then paste the returned id below.
+# Web UI (public/) served as static assets by the same worker.
+[assets]
+directory = "./public"
+binding = "ASSETS"
+# The worker runs first for these paths so the API and webhook are never
+# shadowed by a static file.
+run_worker_first = ["/api/*", "/webhook", "/init"]
+
 [[kv_namespaces]]
 binding = "MAILBOX"
 id = "PUT_YOUR_KV_NAMESPACE_ID_HERE"
 
-# Secrets (never put them in this file):
-#   BOT_TOKEN       - from @BotFather
-#   WEBHOOK_SECRET  - any random string
-#   SETUP_TOKEN     - any random string, used once to call /init
-#   ADMIN_ID        - your numeric Telegram user id (optional)
+# Secrets (set with `npx wrangler secret put <NAME>` or in the dashboard):
+#   BOT_TOKEN, WEBHOOK_SECRET, SETUP_TOKEN, ADMIN_ID
