@@ -1,0 +1,23 @@
+name = "tempmail-bot"
+main = "src/index.js"
+compatibility_date = "2025-09-23"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+# Public variables (safe to commit). Change MAIL_DOMAIN once your domain is on Cloudflare.
+[vars]
+MAIL_DOMAIN = "example.com"
+BOT_USERNAME = "your_bot_username"
+TEMP_TTL_SECONDS = "86400"
+MAX_PERM_ADDRESSES = "3"
+
+# Create with: wrangler kv namespace create MAILBOX
+[[kv_namespaces]]
+binding = "MAILBOX"
+id = "PUT_YOUR_KV_NAMESPACE_ID_HERE"
+
+# Secrets are NOT stored here. Set them once with:
+#   wrangler secret put BOT_TOKEN
+#   wrangler secret put WEBHOOK_SECRET
+#   wrangler secret put SETUP_TOKEN
+#   wrangler secret put ADMIN_ID
