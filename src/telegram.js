@@ -57,27 +57,29 @@ export class Telegram {
 	}
 }
 
+// All user-facing strings live here and in bot.js, so translating the UI
+// (for example to Persian) only means editing these two files.
 export const MAIN_MENU = {
 	inline_keyboard: [
 		[
-			{ text: "➕ ایمیل موقت", callback_data: "new:temp" },
-			{ text: "♾ ایمیل دائمی", callback_data: "new:perm" },
+			{ text: "\u2795 Temporary Email", callback_data: "new:temp" },
+			{ text: "\u267e Permanent Email", callback_data: "new:perm" },
 		],
 		[
-			{ text: "📥 صندوق من", callback_data: "inbox" },
-			{ text: "📮 آدرس های من", callback_data: "addresses" },
+			{ text: "\ud83d\udce5 My Inbox", callback_data: "inbox" },
+			{ text: "\ud83d\udcee My Addresses", callback_data: "addresses" },
 		],
 		[
-			{ text: "🎁 کد هدیه", callback_data: "gift" },
-			{ text: "🔗 دعوت دوستان", callback_data: "invite" },
+			{ text: "\ud83c\udf81 Gift Code", callback_data: "gift" },
+			{ text: "\ud83d\udd17 Invite Friends", callback_data: "invite" },
 		],
 		[
-			{ text: "⚙️ تنظیمات", callback_data: "settings" },
-			{ text: "ℹ️ راهنما", callback_data: "help" },
+			{ text: "\u2699\ufe0f Settings", callback_data: "settings" },
+			{ text: "\u2139\ufe0f Help", callback_data: "help" },
 		],
 	],
 }
 
 export const BACK_MENU = {
-	inline_keyboard: [[{ text: "⬅️ بازگشت به منو", callback_data: "menu" }]],
+	inline_keyboard: [[{ text: "\u2b05\ufe0f Back to menu", callback_data: "menu" }]],
 }
