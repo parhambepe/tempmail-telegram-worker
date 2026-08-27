@@ -1,0 +1,18 @@
+{
+	"name": "TempMail",
+	"short_name": "TempMail",
+	"description": "Temporary and permanent email addresses, synced with the Telegram bot.",
+	"lang": "fa",
+	"dir": "rtl",
+	"start_url": "/",
+	"scope": "/",
+	"display": "standalone",
+	"orientation": "portrait",
+	"background_color": "#191919",
+	"theme_color": "#191919",
+	"icons": [
+		{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+		{ "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+		{ "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+	]
+}
