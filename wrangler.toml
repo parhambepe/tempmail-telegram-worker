@@ -6,3 +6,4 @@ main = "src/index.js"
 binding = "MAILBOX"
 id = "${KV_NAMESPACE_ID}"
 # id = "KV_NAMESPACE_ID"  # یا ID واقعی رو اینجا بذار
+compatibility_date = "2026-08-28"
