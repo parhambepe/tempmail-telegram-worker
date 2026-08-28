@@ -9,3 +9,4 @@ binding = "MAILBOX"
 [assets]
 directory = "./public"
 binding = "ASSETS"
+#hello
