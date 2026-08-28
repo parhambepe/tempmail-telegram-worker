@@ -166,3 +166,41 @@ export class Store {
 		return raw ? JSON.parse(raw) : null
 	}
 }
+
+// ---------------------------------------------------------------------------
+// Module-level wrappers so `src/api.js` can import the store methods as plain
+// functions (it calls them as `listAddresses(kv, chatId, ...)`). Each wrapper
+// builds a throw-away Store on the given KV binding. `createAddress` mirrors
+// api.js' signature: (env, chatId, type, local).
+// ---------------------------------------------------------------------------
+export function createAddress(env, chatId, type, local) {
+	const store = new Store(env.MAILBOX, env.MAIL_DOMAIN)
+	return store.createAddress(chatId, {
+		ttlSeconds: type === "temp" ? Number(env.TEMP_TTL_SECONDS || 86400) : null,
+		local: local || null,
+	})
+}
+export function listAddresses(kv, chatId) {
+	return new Store(kv, "").listAddresses(chatId)
+}
+export function deleteAddress(kv, chatId, address) {
+	return new Store(kv, "").deleteAddress(chatId, address)
+}
+export function countPermanent(kv, chatId) {
+	return new Store(kv, "").countPermanent(chatId)
+}
+export function listMessages(kv, chatId, limit) {
+	return new Store(kv, "").listMessages(chatId, limit)
+}
+export function getMessage(kv, key) {
+	return new Store(kv, "").getMessage(key)
+}
+export function getSettings(kv, chatId) {
+	return new Store(kv, "").getSettings(chatId)
+}
+export function setSettings(kv, chatId, settings) {
+	return new Store(kv, "").setSettings(chatId, settings)
+}
+export function getBonusSlots(kv, chatId) {
+	return new Store(kv, "").getBonusSlots(chatId)
+}
