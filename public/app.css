@@ -11,6 +11,8 @@
 	--red: #e56458;
 	--radius: 12px;
 	--shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.04);
+	--glass-bg: rgba(255, 255, 255, 0.6);
+	--glass-border: rgba(255, 255, 255, 0.3);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,6 +28,8 @@
 		--green: #72bc8f;
 		--red: #e97366;
 		--shadow: none;
+		--glass-bg: rgba(25, 25, 25, 0.7);
+		--glass-border: rgba(255, 255, 255, 0.1);
 	}
 }
 
@@ -37,6 +41,7 @@ html,
 body {
 	margin: 0;
 	padding: 0;
+	height: 100%;
 }
 
 body {
@@ -44,6 +49,18 @@ body {
 	color: var(--text);
 	font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Vazirmatn, Tahoma, sans-serif;
 	min-height: 100vh;
+	position: relative;
+	z-index: 1;
+}
+
+#bg-canvas {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	pointer-events: none;
 }
 
 .topbar {
@@ -55,7 +72,9 @@ body {
 	border-bottom: 1px solid var(--border);
 	position: sticky;
 	top: 0;
-	background: var(--canvas);
+	background: var(--glass-bg);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
 	z-index: 5;
 }
 
@@ -84,12 +103,21 @@ main {
 	display: flex;
 	flex-direction: column;
 	gap: 24px;
+	position: relative;
+	z-index: 1;
 }
 
 .view {
 	display: flex;
 	flex-direction: column;
 	gap: 24px;
+}
+
+.glass {
+	background: var(--glass-bg) !important;
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border: 1px solid var(--glass-border) !important;
 }
 
 .card {
@@ -101,6 +129,12 @@ main {
 	flex-direction: column;
 	gap: 16px;
 	box-shadow: var(--shadow);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
 .card.center {
@@ -171,7 +205,11 @@ button {
 	border: 1px solid transparent;
 	min-height: 44px;
 	padding: 0 16px;
-	transition: background 0.15s ease, border-color 0.15s ease;
+	transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+
+button:active {
+	transform: scale(0.96);
 }
 
 button:focus-visible,
@@ -305,6 +343,11 @@ input:focus-visible {
 	align-items: center;
 	justify-content: space-between;
 	gap: 12px;
+	transition: transform 0.15s ease;
+}
+
+.list li:hover {
+	transform: translateX(-4px);
 }
 
 .mail-btn {
@@ -382,6 +425,7 @@ input:focus-visible {
 	width: 44px;
 	height: 26px;
 	accent-color: var(--accent);
+	cursor: pointer;
 }
 
 .sheet {
@@ -392,19 +436,33 @@ input:focus-visible {
 	align-items: flex-end;
 	justify-content: center;
 	z-index: 10;
+	animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
 }
 
 .sheet-inner {
 	width: min(720px, 100%);
 	max-height: 85vh;
 	overflow: auto;
-	background: var(--canvas);
-	border: 1px solid var(--border);
+	background: var(--glass-bg);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	border: 1px solid var(--glass-border);
 	border-radius: 16px 16px 0 0;
 	padding: 24px;
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
+	animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+	from { transform: translateY(30px); opacity: 0; }
+	to { transform: translateY(0); opacity: 1; }
 }
 
 .sheet-inner pre {
@@ -431,6 +489,7 @@ input:focus-visible {
 	padding: 10px 18px;
 	font-size: 14px;
 	z-index: 20;
+	animation: slideUp 0.25s ease;
 }
 
 .hidden {
@@ -464,5 +523,6 @@ input:focus-visible {
 @media (prefers-reduced-motion: reduce) {
 	* {
 		transition: none !important;
+		animation: none !important;
 	}
 }

@@ -1,18 +1,18 @@
 {
-	"name": "TempMail",
-	"short_name": "TempMail",
-	"description": "Temporary and permanent email addresses, synced with the Telegram bot.",
-	"lang": "fa",
-	"dir": "rtl",
-	"start_url": "/",
-	"scope": "/",
-	"display": "standalone",
-	"orientation": "portrait",
-	"background_color": "#191919",
-	"theme_color": "#191919",
-	"icons": [
-		{ "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-		{ "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-		{ "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
-	]
+  "name": "TempMail",
+  "short_name": "TempMail",
+  "description": "TempMail - Email on Telegram",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#191919",
+  "theme_color": "#191919",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232783DE'/%3E%3Cpath d='M7 11.5h18v9.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 7 21z' fill='white'/%3E%3Cpath d='M7.5 12 16 18l8.5-6' stroke='%232783DE' stroke-width='1.6' fill='none'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
 }

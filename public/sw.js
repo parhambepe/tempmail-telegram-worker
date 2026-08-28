@@ -2,7 +2,7 @@
 // opens instantly. API responses are always fetched from the network.
 
 const CACHE = "tempmail-shell-v1"
-const SHELL = ["/", "/index.html", "/app.css", "/app.js", "/manifest.webmanifest"]
+const SHELL = ["/", "/index.html", "/app.css", "/app.js", "/3d-bg.js", "/manifest.webmanifest"]
 
 self.addEventListener("install", (event) => {
 	event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL)).then(() => self.skipWaiting()))

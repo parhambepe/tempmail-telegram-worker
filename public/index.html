@@ -11,6 +11,9 @@
 		<link rel="stylesheet" href="/app.css" />
 	</head>
 	<body>
+		<!-- THREE.JS BACKGROUND -->
+		<div id="bg-canvas"></div>
+
 		<header class="topbar">
 			<div class="brand">
 				<span class="brand-mark" aria-hidden="true">
@@ -27,7 +30,7 @@
 		<main id="main">
 			<!-- LOGIN -->
 			<section id="view-login" class="view">
-				<div class="card center">
+				<div class="card center glass">
 					<h1>ورود با کد تلگرام</h1>
 					<p class="muted">
 						در ربات تلگرام دستور <b>/web</b> را بفرستید و کد شش‌رقمی را اینجا وارد کنید.
@@ -54,7 +57,7 @@
 
 			<!-- APP -->
 			<section id="view-app" class="view hidden">
-				<div class="card address-card">
+				<div class="card address-card glass">
 					<div class="row between">
 						<span class="label">آدرس فعال</span>
 						<span id="active-ttl" class="pill">—</span>
@@ -70,7 +73,7 @@
 					<p id="quota" class="muted small">—</p>
 				</div>
 
-				<nav class="tabs" role="tablist">
+				<nav class="tabs glass" role="tablist">
 					<button class="tab active" data-tab="inbox" role="tab" type="button">صندوق</button>
 					<button class="tab" data-tab="addresses" role="tab" type="button">آدرس‌ها</button>
 					<button class="tab" data-tab="settings" role="tab" type="button">تنطیمات</button>
@@ -92,11 +95,11 @@
 
 				<div id="tab-settings" class="tabpanel hidden">
 					<span class="label">تنطیمات</span>
-					<label class="switch-row">
+					<label class="switch-row glass">
 						<span>اعلان تلگرام برای ایمیل جدید</span>
 						<input id="set-notify" type="checkbox" />
 					</label>
-					<label class="switch-row">
+					<label class="switch-row glass">
 						<span>نمایش لینک‌های داخل ایمیل</span>
 						<input id="set-links" type="checkbox" />
 					</label>
@@ -107,7 +110,7 @@
 
 		<!-- MESSAGE SHEET -->
 		<div id="sheet" class="sheet hidden" role="dialog" aria-modal="true" aria-labelledby="sheet-subject">
-			<div class="sheet-inner">
+			<div class="sheet-inner glass">
 				<div class="row between">
 					<h2 id="sheet-subject">—</h2>
 					<button id="sheet-close" class="ghost icon" type="button" aria-label="بستن">✕</button>
@@ -118,6 +121,10 @@
 		</div>
 
 		<div id="toast" class="toast hidden"></div>
+		
+		<!-- Three.js -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+		<script src="/3d-bg.js"></script>
 		<script src="/app.js"></script>
 	</body>
 </html>
