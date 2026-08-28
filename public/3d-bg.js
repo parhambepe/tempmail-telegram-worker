@@ -1,4 +1,4 @@
-// Three.js 3D Particle Background
+// Three.js 3D Particle Background  
 (function() {
     // Only run if Three.js is loaded
     if (typeof THREE === 'undefined') return;
