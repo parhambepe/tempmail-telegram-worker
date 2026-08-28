@@ -8,4 +8,4 @@ binding = "MAILBOX"
 
 [assets]
 directory = "./public"
-binding = "ASSETS"واقعی رو اینجا بذار
+binding = "ASSETS"
