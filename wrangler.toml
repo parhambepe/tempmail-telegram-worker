@@ -5,4 +5,7 @@ main = "src/index.js"
 
 [[kv_namespaces]]
 binding = "MAILBOX"
-# id = "KV_NAMESPACE_ID"  # یا ID واقعی رو اینجا بذار
+
+[assets]
+directory = "./public"
+binding = "ASSETS"واقعی رو اینجا بذار
